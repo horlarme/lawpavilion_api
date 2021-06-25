@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Clients\CreateNewClientController;
+use App\Http\Controllers\Clients\FetchAllClientsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('clients', CreateNewClientController::class)
+    ->name('client.create');
+Route::get('clients', FetchAllClientsController::class)
+    ->name('clients');
